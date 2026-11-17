@@ -21,7 +21,7 @@
   function mierz(){tops=sek.map(function(s){return s.getBoundingClientRect().top+window.scrollY})}
   function akt(){czeka=false;naglowek();mierz();var y=window.scrollY+window.innerHeight*.4,id='';sek.forEach(function(s,i){if(tops[i]<=y)id=s.id});linki.forEach(function(a){a.classList.toggle('on',!!id&&a.getAttribute('href')==='#'+id)})}
   window.addEventListener('scroll',function(){if(!czeka){czeka=true;requestAnimationFrame(akt)}},{passive:true});
-  window.addEventListener('resize',function(){tops=[]});
+  window.addEventListener('resize',function(){requestAnimationFrame(akt)});
   window.addEventListener('load',function(){mierz();akt()});
   naglowek();
 
